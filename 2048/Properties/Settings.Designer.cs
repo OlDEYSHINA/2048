@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace zmeyka.Properties
+namespace game.Properties
 {
 
 
