@@ -24,7 +24,6 @@ namespace game
             MoveSquares(e.KeyChar);
             SpawnNewSquare();
             WriteLabels();
-            label1.
         }
 
         private void ReadLabels()
