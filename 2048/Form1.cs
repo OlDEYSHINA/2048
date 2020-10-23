@@ -6,8 +6,10 @@ namespace game
     public partial class Form1 : Form
     {
         private bool _spawned;
-        private readonly string[] pole = new string[16];
-
+        /// <summary>
+        /// Высота потом ширина
+        /// </summary>
+        private int?[,] pole = new int?[4, 4];
         public Form1()
         {
             InitializeComponent();
@@ -20,50 +22,50 @@ namespace game
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ReadLabels();
+            //ReadLabels();
             MoveSquares(e.KeyChar);
             SpawnNewSquare();
             WriteLabels();
         }
 
-        private void ReadLabels()
-        {
-            pole[0] = label1.Text;
-            pole[1] = label2.Text;
-            pole[2] = label3.Text;
-            pole[3] = label4.Text;
-            pole[4] = label5.Text;
-            pole[5] = label6.Text;
-            pole[6] = label7.Text;
-            pole[7] = label8.Text;
-            pole[8] = label9.Text;
-            pole[9] = label10.Text;
-            pole[10] = label11.Text;
-            pole[11] = label12.Text;
-            pole[12] = label13.Text;
-            pole[13] = label14.Text;
-            pole[14] = label15.Text;
-            pole[15] = label16.Text;
-        }
+        /*   private void ReadLabels()
+           {
+               pole[0] = label1.Text;
+               pole[1] = label2.Text;
+               pole[2] = label3.Text;
+               pole[3] = label4.Text;
+               pole[4] = label5.Text;
+               pole[5] = label6.Text;
+               pole[6] = label7.Text;
+               pole[7] = label8.Text;
+               pole[8] = label9.Text;
+               pole[9] = label10.Text;
+               pole[10] = label11.Text;
+               pole[11] = label12.Text;
+               pole[12] = label13.Text;
+               pole[13] = label14.Text;
+               pole[14] = label15.Text;
+               pole[15] = label16.Text;
+           }*/
 
         private void WriteLabels()
         {
-            label1.Text = pole[0];
-            label2.Text = pole[1];
-            label3.Text = pole[2];
-            label4.Text = pole[3];
-            label5.Text = pole[4];
-            label6.Text = pole[5];
-            label7.Text = pole[6];
-            label8.Text = pole[7];
-            label9.Text = pole[8];
-            label10.Text = pole[9];
-            label11.Text = pole[10];
-            label12.Text = pole[11];
-            label13.Text = pole[12];
-            label14.Text = pole[13];
-            label15.Text = pole[14];
-            label16.Text = pole[15];
+            label1.Text = pole[0, 0].ToString();
+            label2.Text = pole[1, 0].ToString();
+            label3.Text = pole[2, 0].ToString();
+            label4.Text = pole[3, 0].ToString();
+            label5.Text = pole[0, 1].ToString();
+            label6.Text = pole[1, 1].ToString();
+            label7.Text = pole[2, 1].ToString();
+            label8.Text = pole[3, 1].ToString();
+            label9.Text = pole[0, 2].ToString();
+            label10.Text = pole[1, 2].ToString();
+            label11.Text = pole[2, 2].ToString();
+            label12.Text = pole[3, 2].ToString();
+            label13.Text = pole[0, 3].ToString();
+            label14.Text = pole[1, 3].ToString();
+            label15.Text = pole[2, 3].ToString();
+            label16.Text = pole[3, 3].ToString();
         }
 
         private void SpawnNewSquare()
@@ -72,333 +74,96 @@ namespace game
             while (count != 1)
             {
                 var rand = new Random();
-                var rand1 = rand.Next(1, 16);
+                var rand1 = rand.Next(0, 3); //y coordinate
+                var rand2 = new Random();
+                var rand3 = rand2.Next(0, 3); //x coordinate
 
-
-                switch (rand1)
+                if (pole[rand1, rand3] == (null))
                 {
-                    case 1:
-                        if (pole[0] == " ")
-                        {
-                            pole[0] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 2:
-                        if (pole[1] == " ")
-                        {
-                            pole[1] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 3:
-                        if (pole[2] == " ")
-                        {
-                            pole[2] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 4:
-                        if (pole[3] == " ")
-                        {
-                            pole[3] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 5:
-                        if (pole[4] == " ")
-                        {
-                            pole[4] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 6:
-                        if (pole[5] == " ")
-                        {
-                            pole[5] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 7:
-                        if (pole[6] == " ")
-                        {
-                            pole[6] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 8:
-                        if (pole[7] == " ")
-                        {
-                            pole[7] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 9:
-                        if (pole[8] == " ")
-                        {
-                            pole[8] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 10:
-                        if (pole[9] == " ")
-                        {
-                            pole[9] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 11:
-                        if (pole[10] == " ")
-                        {
-                            pole[10] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 12:
-                        if (pole[11] == " ")
-                        {
-                            pole[11] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 13:
-                        if (pole[12] == " ")
-                        {
-                            pole[12] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 14:
-                        if (pole[13] == " ")
-                        {
-                            pole[13] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 15:
-                        if (pole[14] == " ")
-                        {
-                            pole[14] = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 16:
-                        if (pole[15] == " ")
-                        {
-                            pole[15] = "2";
-                            count++;
-                        }
-
-                        break;
+                    pole[rand1, rand3] = 2;
+                    count += 1;
                 }
             }
         }
         private void SpawnSquares() //рандомайзер начала игры
         {
-            var count = 0;
-
-            while (count != 3)
+            for (var i = 0; i < 3; i++)
             {
-                var rand = new Random();
-                var rand1 = rand.Next(1, 16);
-
-                switch (rand1)
-                {
-                    case 1:
-                        if (label1.Text == " ")
-                        {
-                            label1.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 2:
-                        if (label2.Text == " ")
-                        {
-                            label2.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 3:
-                        if (label3.Text == " ")
-                        {
-                            label3.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 4:
-                        if (label4.Text == " ")
-                        {
-                            label4.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 5:
-                        if (label5.Text == " ")
-                        {
-                            label5.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 6:
-                        if (label6.Text == " ")
-                        {
-                            label6.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 7:
-                        if (label7.Text == " ")
-                        {
-                            label7.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 8:
-                        if (label8.Text == " ")
-                        {
-                            label8.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 9:
-                        if (label9.Text == " ")
-                        {
-                            label9.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 10:
-                        if (label10.Text == " ")
-                        {
-                            label10.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 11:
-                        if (label11.Text == " ")
-                        {
-                            label11.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 12:
-                        if (label12.Text == " ")
-                        {
-                            label12.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 13:
-                        if (label13.Text == " ")
-                        {
-                            label13.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 14:
-                        if (label14.Text == " ")
-                        {
-                            label14.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 15:
-                        if (label15.Text == " ")
-                        {
-                            label15.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                    case 16:
-                        if (label16.Text == " ")
-                        {
-                            label16.Text = "2";
-                            count++;
-                        }
-
-                        break;
-                }
+                SpawnNewSquare();
             }
-
             _spawned = true;
         }
 
         private void PushUp()
         {
-            for (var j = 0; j < 4; j++)
-                for (var i = 3; i >= 1; i--)
-                    if (pole[i + j * 4] != " " && pole[i - 1 + j * 4] == " ")
+            for (var i = 0; i < 4; i++)
+            {
+                for (var n = 0; n < 3; n++) //чтобы точно сдвинулись все
+                {
+                    for (var j = 0; j < 3; j++)
                     {
-                        pole[i - 1 + j * 4] = pole[i + j * 4];
-                        pole[i + j * 4] = " ";
+                        if (pole[j, i] == null && pole[j + 1, i] != null)
+                        {
+                            pole[j, i] = pole[j + 1, i];
+                            pole[j + 1, i] = null;
+                        }
                     }
+                }
+            }
         }
 
         private void PushDown()
         {
-            for (var j = 0; j < 4; j++)
-                for (var i = 1; i <= 3; i++)
-                    if (pole[i - 1 + j * 4] != " " && pole[i + j * 4] == " ")
+            for (var i = 0; i < 4; i++)
+            {
+                for (var n = 0; n < 3; n++)
+                {
+                    for (var j = 0; j < 3; j++)
                     {
-                        pole[i + j * 4] = pole[i - 1 + j * 4];
-                        pole[i - 1 + j * 4] = " ";
+                        if (pole[j + 1, i] == null && pole[j, i] != null)
+                        {
+                            pole[j + 1, i] = pole[j, i];
+                            pole[j, i] = null;
+                        }
                     }
+                }
+            }
         }
 
 
         private void PushLeft()
         {
-            for (var n = 0; n < 2; n++)
+            for (var i = 0; i < 4; i++)
             {
-                for (var i = 0; i < 4; i++) //Высота
-                for (var j = 3; j >= 1; j--) //Ширина
-                    if (pole[i + j * 4] != " " && pole[i + (j - 1) * 4] == " ")
+                for (var n = 0; n < 3; n++)
+                {
+                    for (var j = 0; j < 3; j++)
                     {
-                        pole[i + (j - 1) * 4] = pole[i + j * 4];
-                        pole[i + j * 4] = " ";
-
+                        if (pole[i, j] == null && pole[i, j + 1] != null)
+                        {
+                            pole[i, j] = pole[i, j + 1];
+                            pole[i, j + 1] = null;
+                        }
                     }
+                }
             }
         }
         private void PushRight()
         {
             for (var i = 0; i < 4; i++)
-                for (var j = 1; j <= 3; j++)
-                    if (pole[i + (j - 1) * 4] != " " && pole[i + j * 4] == " ")
+            {
+                for (var n = 0; n < 3; n++)
+                {
+                    for (var j = 0; j < 3; j++)
                     {
-                        pole[i + j * 4] = pole[i + (j - 1) * 4];
-                        pole[i + (j - 1) * 4] = " ";
+                        if (pole[i, j + 1] == null && pole[i, j] != null)
+                        {
+                            pole[i, j + 1] = pole[i, j];
+                            pole[i, j] = null;
+                        }
                     }
+                }
+            }
         }
 
         private void MoveSquares(int moveKey)
@@ -406,21 +171,17 @@ namespace game
             if (moveKey == 119 || moveKey == 1094) //Up
             {
                 PushUp();
-
-                for (var j = 0;
-                    j < 4;
-                    j++) //проверяет сверху вниз,слева направо соседние в вертикали клетки на наличие одинаковых чисел
-                    for (var i = 0; i < 3; i++)
+                for (var i = 0; i < 4; i++)
+                {
+                    for (var j = 0; j < 3; j++)
                     {
-                        if (pole[i + j * 4] == pole[i + 1 + j * 4])
+                        if (pole[j, i] == pole[j + 1, i]&& pole[j,i]!=null)
                         {
-                            pole[i + 1 + j * 4] = " ";
-
-                            SumSquare(j, i);
+                            pole[j, i] += pole[j, i];
+                            pole[j + 1, i] = null;
                         }
-
-                        ;
                     }
+                }
 
                 PushUp();
             }
@@ -428,13 +189,17 @@ namespace game
             if (moveKey == 115 || moveKey == 1099) //down
             {
                 PushDown();
-                for (var j = 0; j < 4; j++)
-                    for (var i = 0; i < 3; i++)
-                        if (pole[i + j * 4] == pole[i + 1 + j * 4])
+                for (var i = 0; i < 4; i++)
+                {
+                    for (var j = 0; j < 3; j++)
+                    {
+                        if (pole[j + 1, i] == pole[j, i] && pole[j, i] != null)
                         {
-                            pole[i + 1 + j * 4] = " ";
-                            SumSquare(j, i);
+                            pole[j + 1, i] += pole[j + 1, i];
+                            pole[j, i] = null;
                         }
+                    }
+                }
 
                 PushDown();
             }
@@ -443,12 +208,16 @@ namespace game
             {
                 PushLeft();
                 for (var i = 0; i < 4; i++)
+                {
                     for (var j = 0; j < 3; j++)
-                        if (pole[i + j * 4] == pole[i + (j + 1) * 4] && pole[i + j * 4] != " ")
+                    {
+                        if (pole[ i,j] == pole[i, j+1] && pole[i, j+1] != null)
                         {
-                            pole[i + (j + 1) * 4] = " ";
-                            SumSquare(j, i);
+                            pole[i, j] += pole[i, j];
+                            pole[i, j+1] = null;
                         }
+                    }
+                }
                 PushLeft();
             }
 
@@ -456,12 +225,16 @@ namespace game
             {
                 PushRight();
                 for (var i = 0; i < 4; i++)
-                    for (var j = 2; j >= 0; j--)
-                        if (pole[i + j * 4] == pole[i + (j + 1) * 4])
+                {
+                    for (var j = 0; j < 3; j++)
+                    {
+                        if (pole[i, j+1] == pole[i, j] && pole[i, j] != null)
                         {
-                            pole[i + (j) * 4] = " ";
-                            SumSquare(j + 1, i);
+                            pole[i,j+1] += pole[i,j+1];
+                            pole[i,j] = null;
                         }
+                    }
+                }
                 PushRight();
             }
         }
@@ -470,30 +243,30 @@ namespace game
         {
         }
 
-        private void SumSquare(int j, int i)
-        {
-            switch (pole[i + j * 4])
-            {
-                case "2":
-                    pole[i + j * 4] = "4";
-                    break;
-                case "4":
-                    pole[i + j * 4] = "8";
-                    break;
-                case "8":
-                    pole[i + j * 4] = "16";
-                    break;
-                case "16":
-                    pole[i + j * 4] = "32";
-                    break;
-                case "32":
-                    pole[i + j * 4] = "64";
-                    break;
-                case "64":
-                    pole[i + j * 4] = "128";
-                    break;
-            }
-        }
+        //private void SumSquare(int j, int i)
+        //{
+        //    switch (pole[i + j * 4])
+        //    {
+        //        case "2":
+        //            pole[i + j * 4] = "4";
+        //            break;
+        //        case "4":
+        //            pole[i + j * 4] = "8";
+        //            break;
+        //        case "8":
+        //            pole[i + j * 4] = "16";
+        //            break;
+        //        case "16":
+        //            pole[i + j * 4] = "32";
+        //            break;
+        //        case "32":
+        //            pole[i + j * 4] = "64";
+        //            break;
+        //        case "64":
+        //            pole[i + j * 4] = "128";
+        //            break;
+        //    }
+        //}
 
         private void label10_Click(object sender, EventArgs e)
         {
