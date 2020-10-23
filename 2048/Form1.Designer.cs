@@ -1,4 +1,4 @@
-﻿namespace zmeyka
+﻿namespace game
 {
     partial class Form1
     {
@@ -316,6 +316,7 @@
             this.label10.Size = new System.Drawing.Size(60, 91);
             this.label10.TabIndex = 30;
             this.label10.Text = " ";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -417,6 +418,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

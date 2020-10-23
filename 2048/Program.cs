@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 
 
-namespace zmeyka
+namespace game
 {
     
 
